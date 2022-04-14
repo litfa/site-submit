@@ -2,7 +2,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-09 18:36:46
- * @LastEditTime: 2022-04-13 17:08:35
+ * @LastEditTime: 2022-04-13 18:33:36
  * @LastEditors: litfa
  * @Description: router
  * @FilePath: /web/src/router/index.ts
@@ -15,6 +15,10 @@ const routes = [
   {
     path: '/',
     component: Home
+  },
+  {
+    path: '/login',
+    component: () => import('@/pages/Login.vue')
   },
   {
     path: '/new',
