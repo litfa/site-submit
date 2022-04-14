@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-13 16:59:31
- * @LastEditTime: 2022-04-14 19:04:11
+ * @LastEditTime: 2022-04-14 20:32:23
  * @LastEditors: litfa
  * @Description: 新增站点
  * @FilePath: /web/src/pages/new.vue
@@ -11,7 +11,9 @@
 import { reactive, watch, ref } from 'vue'
 import { pinyin } from 'pinyin-pro'
 import checkHostApi from './../apis/checkHost'
+import newSiteApi from './../apis/newSite'
 import { LoadingOne } from '@icon-park/vue-next'
+import { ElMessage } from 'element-plus'
 const form = reactive({
   name: '',
   desc: '',
@@ -39,15 +41,21 @@ watch(host, (val) => {
   }, 1000)
 })
 
-const onSubmit = () => {
-  console.log('submit!')
+const onSubmit = async () => {
+  if (!allow.value) return ElMessage.error('该域名不可用')
+  if (!form.name) return ElMessage.error('请输入网站名')
+  if (!form.desc) return ElMessage.error('请输入介绍')
+  let { data: res } = await newSiteApi(form.host, form.name, form.desc)
+  if (res.status == 1) {
+    if (!form.desc) return ElMessage.success('提交成功')
+  }
 }
 </script>
 <template>
   <div class="New">
     <el-form :model="form" label-width="120px">
       <el-form-item label="网站名称">
-        <el-input v-model="form.name" />
+        <el-input v-model="form.name" placeholder="例：小明的博客" />
       </el-form-item>
       <el-form-item label="域名前缀">
         <el-input v-model.trim="host" />
