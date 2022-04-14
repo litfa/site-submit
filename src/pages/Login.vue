@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-13 18:25:40
- * @LastEditTime: 2022-04-13 19:57:16
+ * @LastEditTime: 2022-04-14 14:45:32
  * @LastEditors: litfa
  * @Description: 注册账号
  * @FilePath: /web/src/pages/Login.vue
@@ -11,6 +11,11 @@
 import { onMounted } from 'vue'
 import { reactive, ref } from 'vue'
 import type { FormInstance } from 'element-plus'
+import loginApi from '@/apis/login'
+import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const formRef = ref()
 
@@ -50,17 +55,25 @@ const login = (phone) => {
     show: 'dialog', // 包括 inner，dialog两种方式
     option: 'jijian', // 当 show='inner' 时，此处传元素的 id；当 show='dialog' 时，此值为 null；
     mobile: phone, // 用户手机
-    success: function (mobile, token) {
-      console.log('极简验证-验证成功', mobile, token)
+    async success(mobile, token) {
+      const { data: res } = await loginApi(mobile, token)
+      if (res.status == 1) {
+        ElMessage.success('登录成功!')
+        setTimeout(() => {
+          router.push('/')
+        }, 3000)
+      } else {
+        ElMessage.error('登录失败!' + JSON.stringify(res))
+      }
     },
-    onshow: function (qrcode) {
-      console.log('极简验证-二维码展示')
+    // onshow: function (qrcode) {
+    //   console.log('极简验证-二维码展示')
+    // },
+    cancel() {
+      ElMessage.warning('取消登录')
     },
-    cancel: function () {
-      console.log('极简验证-用户取消')
-    },
-    fail: function (msg) {
-      console.log('极简验证-验证失败', msg)
+    fail(msg) {
+      ElMessage.error('验证失败!' + msg)
     }
   })
 }

@@ -1,10 +1,10 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-09 18:28:33
- * @LastEditTime: 2022-04-10 18:54:34
+ * @LastEditTime: 2022-04-14 14:39:49
  * @LastEditors: litfa
  * @Description: config
- * @FilePath: /admin/vite.config.ts
+ * @FilePath: /web/vite.config.ts
  * 
  */
 import { defineConfig } from 'vite'
@@ -40,7 +40,7 @@ export default defineConfig({
   server: {
     proxy: {
       // 字符串简写写法
-      '/api': 'http://localhost:3000'
+      '/api': 'http://localhost:3001'
     }
   }
 })
