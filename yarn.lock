@@ -3014,6 +3014,11 @@ pinia@^2.0.13:
     "@vue/devtools-api" "^6.1.4"
     vue-demi "*"
 
+pinyin-pro@^3.8.3:
+  version "3.8.3"
+  resolved "https://registry.npmmirror.com/pinyin-pro/-/pinyin-pro-3.8.3.tgz#d0f40a2eebf8f07ccf6f88a63270f053e9511ec7"
+  integrity sha512-hH7EyQNhs9lx5KKKiJz1iIU19YxE2X1jB5qko3yHSCy439HRFI+0qonrRk8zccLdDg0R7utnrzurd6yqKDlhSg==
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.npmmirror.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
