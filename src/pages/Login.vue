@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-13 18:25:40
- * @LastEditTime: 2022-04-14 15:19:20
+ * @LastEditTime: 2022-04-14 16:15:27
  * @LastEditors: litfa
  * @Description: 注册账号
  * @FilePath: /web/src/pages/Login.vue
@@ -13,6 +13,7 @@ import { reactive, ref } from 'vue'
 import type { FormInstance } from 'element-plus'
 import loginApi from '@/apis/login'
 import setInfoApi from '@/apis/setInfo'
+import getUserInfo from '@/utils/setUserInfo'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 
@@ -60,6 +61,7 @@ const login = (phone) => {
       const { data: res } = await loginApi(mobile, token)
       if (res.status == 1) {
         localStorage.setItem('token', res.token)
+        getUserInfo()
         ElMessage.success('登录成功!')
         // 登录
         if (res.type == 'login') {
@@ -95,6 +97,7 @@ const setUserInfo = async () => {
   let { data: res } = await setInfoApi(username.value)
   if (res.status == 1) {
     dialogTableVisible.value = false
+    getUserInfo()
     ElMessage.success('注册成功!')
     setTimeout(() => {
       router.push('/')
