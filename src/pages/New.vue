@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-13 16:59:31
- * @LastEditTime: 2022-04-14 20:32:23
+ * @LastEditTime: 2022-04-14 20:40:39
  * @LastEditors: litfa
  * @Description: 新增站点
  * @FilePath: /web/src/pages/new.vue
@@ -53,6 +53,18 @@ const onSubmit = async () => {
 </script>
 <template>
   <div class="New">
+    <el-steps
+      :space="200"
+      :active="1"
+      finish-status="success"
+      align-center
+      style="justify-content: center;margin-bottom: 20px;"
+    >
+      <el-step title="注册账号" />
+      <el-step title="填写信息" />
+      <el-step title="上传文件" />
+    </el-steps>
+
     <el-form :model="form" label-width="120px">
       <el-form-item label="网站名称">
         <el-input v-model="form.name" placeholder="例：小明的博客" />

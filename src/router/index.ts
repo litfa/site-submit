@@ -2,7 +2,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-09 18:36:46
- * @LastEditTime: 2022-04-13 18:33:36
+ * @LastEditTime: 2022-04-14 20:42:48
  * @LastEditors: litfa
  * @Description: router
  * @FilePath: /web/src/router/index.ts
@@ -23,6 +23,10 @@ const routes = [
   {
     path: '/new',
     component: () => import('@/pages/New.vue')
+  },
+  {
+    path: '/upload',
+    component: () => import('@/pages/Upload.vue')
   }
 ]
 
