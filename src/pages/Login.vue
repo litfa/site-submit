@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-13 18:25:40
- * @LastEditTime: 2022-04-14 14:45:32
+ * @LastEditTime: 2022-04-14 15:19:20
  * @LastEditors: litfa
  * @Description: 注册账号
  * @FilePath: /web/src/pages/Login.vue
@@ -12,6 +12,7 @@ import { onMounted } from 'vue'
 import { reactive, ref } from 'vue'
 import type { FormInstance } from 'element-plus'
 import loginApi from '@/apis/login'
+import setInfoApi from '@/apis/setInfo'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 
@@ -58,10 +59,18 @@ const login = (phone) => {
     async success(mobile, token) {
       const { data: res } = await loginApi(mobile, token)
       if (res.status == 1) {
+        localStorage.setItem('token', res.token)
         ElMessage.success('登录成功!')
-        setTimeout(() => {
-          router.push('/')
-        }, 3000)
+        // 登录
+        if (res.type == 'login') {
+          setTimeout(() => {
+            router.push('/')
+          }, 3000)
+        } else {
+          // 新用户
+          dialogTableVisible.value = true
+        }
+
       } else {
         ElMessage.error('登录失败!' + JSON.stringify(res))
       }
@@ -76,6 +85,21 @@ const login = (phone) => {
       ElMessage.error('验证失败!' + msg)
     }
   })
+}
+
+const dialogTableVisible = ref(false)
+const username = ref('')
+
+const setUserInfo = async () => {
+  if (username.value == '') return ElMessage.warning('请输入姓名!')
+  let { data: res } = await setInfoApi(username.value)
+  if (res.status == 1) {
+    dialogTableVisible.value = false
+    ElMessage.success('注册成功!')
+    setTimeout(() => {
+      router.push('/')
+    }, 2000)
+  }
 }
 
 </script>
@@ -95,6 +119,11 @@ const login = (phone) => {
     <el-button type="primary" @click="submitForm(formRef)">登录</el-button>
     <span>新用户将自动注册</span>
   </el-form>
+  <el-dialog v-model="dialogTableVisible" title="注册账号">
+    姓名：
+    <el-input placeholder="请输入您的姓名" v-model="username" style="margin: 20px 0;" />
+    <el-button type="text" @click="setUserInfo">确定</el-button>
+  </el-dialog>
 </template>
 
 <style lang="less" scoped>

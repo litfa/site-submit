@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-03-07 09:58:47
- * @LastEditTime: 2022-04-14 14:37:05
+ * @LastEditTime: 2022-04-14 14:53:00
  * @LastEditors: litfa
  * @Description: axios
  * @FilePath: /web/src/utils/request.ts
@@ -31,9 +31,7 @@ axios.interceptors.response.use(
     // 身份认证失败，跳转登录
     if (config.data.status == 3) {
       router.push('/login')
-
     }
-
     return config
   },
   err => {
