@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-03-13 17:37:28
- * @LastEditTime: 2022-04-13 18:46:58
+ * @LastEditTime: 2022-04-15 16:28:01
  * @LastEditors: litfa
  * @Description: 
  * @FilePath: /web/src/shims.d.ts
@@ -15,8 +15,8 @@ declare module 'vue3-eventbus'
 declare module 'Jijian'
 declare const Jijian: any
 interface ImportMetaEnv {
-  readonly VITE_Jijian_appid: string
-  // 更多环境变量...
+  readonly VITE_Jijian_appid: string,
+  readonly VITE_Fs_Url: string
 }
 
 interface ImportMeta {

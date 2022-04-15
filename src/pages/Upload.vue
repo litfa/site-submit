@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 20:41:12
- * @LastEditTime: 2022-04-14 21:15:49
+ * @LastEditTime: 2022-04-15 16:28:19
  * @LastEditors: litfa
  * @Description: 上传文件
  * @FilePath: /web/src/pages/Upload.vue
@@ -12,6 +12,7 @@ import { reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import getSiteApi from './../apis/getSite'
 import { PreviewOpen, Upload } from '@icon-park/vue-next'
+import getFsKey from '@/apis/getFsKey'
 const route = useRoute()
 
 let siteData = ref<any>({})
@@ -26,6 +27,13 @@ const getSite = async () => {
 }
 
 getSite()
+
+// 打开文件管理
+const openFs = async () => {
+  const { data: res } = await getFsKey(siteData.value.host)
+  let key = res.key
+  window.open(`${import.meta.env.VITE_Fs_Url}/${key}`)
+}
 </script>
 
 <template>
@@ -49,7 +57,7 @@ getSite()
         </el-button>
       </a>
 
-      <el-button type="primary">
+      <el-button type="primary" @click="openFs">
         <upload theme="outline" size="16" fill="#fff" />上传文件
       </el-button>
     </div>
