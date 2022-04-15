@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 15:23:16
- * @LastEditTime: 2022-04-15 19:57:58
+ * @LastEditTime: 2022-04-15 20:00:26
  * @LastEditors: litfa
  * @Description: 网站
  * @FilePath: /web/src/components/Sites/Sites.vue
@@ -41,6 +41,7 @@ console.log(counter)
           :key="i.id"
           v-bind="i"
           :showAny="counter.permissions >= 15"
+          @set-good="getAllSite"
         >{{ i.name }}</Item>
       </div>
     </template>
@@ -51,6 +52,7 @@ console.log(counter)
         :key="i.id"
         v-bind="i"
         :showAny="counter.permissions >= 15"
+        @set-good="getAllSite"
       >{{ i.name }}</Item>
     </div>
   </div>

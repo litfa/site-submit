@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-15 17:35:43
- * @LastEditTime: 2022-04-15 19:50:20
+ * @LastEditTime: 2022-04-15 20:00:08
  * @LastEditors: litfa
  * @Description: item
  * @FilePath: /web/src/components/Item/Item.vue
@@ -23,7 +23,9 @@ const setGood = async () => {
   } else {
     ElMessage.error('设置失败，请稍后再试')
   }
+  emits('setGood')
 }
+const emits = defineEmits(['setGood'])
 </script>
 
 <template>
