@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 15:23:16
- * @LastEditTime: 2022-04-15 17:52:03
+ * @LastEditTime: 2022-04-15 18:28:14
  * @LastEditors: litfa
  * @Description: 网站
  * @FilePath: /web/src/components/Sites/Sites.vue
@@ -11,17 +11,28 @@
 import Item from '../Item/Item.vue'
 import getAllSiteApi from '@/apis/getAllSite'
 import { ref } from 'vue'
+import { computed } from '@vue/reactivity'
 const list = ref([])
 const getAllSite = async () => {
   const { data: res } = await getAllSiteApi()
   list.value = res.data
 }
 getAllSite()
+
+// 优质的
+const goodList = computed(() => {
+  return list.value.filter(e => {
+    return e.is_good
+  })
+})
 </script>
 
 <template>
   <div class="Sites">
-    <Item v-for="i in list" :key="i.id" v-bind="i">{{ i.name }}</Item>
+    <h1>所有站点</h1>
+    <div class="all">
+      <Item v-for="i in list" :key="i.id" v-bind="i">{{ i.name }}</Item>
+    </div>
   </div>
 </template>
 
@@ -31,12 +42,15 @@ getAllSite()
   width: 100%;
   background-color: #fff;
   margin: 10px;
-  min-height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  .Item:last-child {
-    margin-right: auto;
+  h1 {
+    margin: 20px;
+  }
+  .all {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-gap: 10px;
+    padding: 10px;
   }
 }
 </style>
