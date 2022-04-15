@@ -1,27 +1,28 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 15:23:16
- * @LastEditTime: 2022-04-14 16:39:23
+ * @LastEditTime: 2022-04-15 17:52:03
  * @LastEditors: litfa
  * @Description: 网站
  * @FilePath: /web/src/components/Sites/Sites.vue
  * 
 -->
 <script lang="ts" setup>
-import propNames from './props'
-const props = defineProps(propNames)
-interface list {
-  id: number
-  username: string,
-  user_id: number
-  host: string
-  index: string
-  date: string
+import Item from '../Item/Item.vue'
+import getAllSiteApi from '@/apis/getAllSite'
+import { ref } from 'vue'
+const list = ref([])
+const getAllSite = async () => {
+  const { data: res } = await getAllSiteApi()
+  list.value = res.data
 }
+getAllSite()
 </script>
 
 <template>
-  <div class="Sites"></div>
+  <div class="Sites">
+    <Item v-for="i in list" :key="i.id" v-bind="i">{{ i.name }}</Item>
+  </div>
 </template>
 
 <style lang="less" scoped>
@@ -31,5 +32,11 @@ interface list {
   background-color: #fff;
   margin: 10px;
   min-height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  .Item:last-child {
+    margin-right: auto;
+  }
 }
 </style>

@@ -40,6 +40,7 @@ declare module 'vue' {
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     Header: typeof import('./src/components/Header/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Item: typeof import('./src/components/Item/Item.vue')['default']
     Menu: typeof import('./src/components/Menu/Menu.vue')['default']
     MySite: typeof import('./src/components/MySite/MySite.vue')['default']
     Nav: typeof import('./src/components/Nav/Nav.vue')['default']
