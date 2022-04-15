@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 16:42:08
- * @LastEditTime: 2022-04-14 16:49:39
+ * @LastEditTime: 2022-04-15 16:52:35
  * @LastEditors: litfa
  * @Description: 导航栏
  * @FilePath: /web/src/components/Nav/Nav.vue
@@ -26,6 +26,7 @@
   height: 60px;
   position: sticky;
   top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   background-color: #fff;

@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 15:44:46
- * @LastEditTime: 2022-04-14 16:51:36
+ * @LastEditTime: 2022-04-15 16:43:35
  * @LastEditors: litfa
  * @Description: 新增网站
  * @FilePath: /web/src/components/New/New.vue
@@ -33,8 +33,7 @@ const counter = useCounterStore()
   display: flex;
   flex-direction: column;
   margin: 10px;
-  position: sticky;
-  top: 70px;
+
   :deep(a) {
     width: 100%;
     text-decoration: none;
