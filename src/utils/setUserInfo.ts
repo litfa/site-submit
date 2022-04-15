@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-14 15:49:52
- * @LastEditTime: 2022-04-14 16:23:20
+ * @LastEditTime: 2022-04-15 19:17:44
  * @LastEditors: litfa
  * @Description: 获取用户信息
  * @FilePath: /web/src/utils/setUserInfo.ts
@@ -18,7 +18,8 @@ export default async () => {
       isLogin: true,
       id: res.data.id,
       username: res.data.username,
-      phone: res.data.phone
+      phone: res.data.phone,
+      permissions: res.data.permissions
     })
   } else {
     counter.setInfo({

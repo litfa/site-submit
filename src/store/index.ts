@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-09 18:48:19
- * @LastEditTime: 2022-04-14 16:23:29
+ * @LastEditTime: 2022-04-15 19:17:10
  * @LastEditors: litfa
  * @Description: store
  * @FilePath: /web/src/store/index.ts
@@ -17,6 +17,7 @@ interface userInfo_login {
   id: number
   username: string
   phone: string
+  permissions: number
 }
 
 export const useCounterStore = defineStore('counter', {
@@ -25,7 +26,8 @@ export const useCounterStore = defineStore('counter', {
       isLogin: false,
       id: -1,
       username: '',
-      phone: ''
+      phone: '',
+      permissions: -1
     }
   },
   // could also be defined as
@@ -37,6 +39,7 @@ export const useCounterStore = defineStore('counter', {
         this.username = data.username
         this.id = data.id
         this.phone = data.phone
+        this.permissions = data.permissions
       }
     }
   }

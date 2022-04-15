@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 15:23:16
- * @LastEditTime: 2022-04-15 19:07:31
+ * @LastEditTime: 2022-04-15 19:49:07
  * @LastEditors: litfa
  * @Description: 网站
  * @FilePath: /web/src/components/Sites/Sites.vue
@@ -27,13 +27,20 @@ const goodList = computed(() => {
     return e.is_good
   })
 })
+console.log(counter)
+
 </script>
 
 <template>
   <div class="Sites">
     <h1>所有站点</h1>
     <div class="all">
-      <Item v-for="i in list" :key="i.id" v-bind="i" :showAny="true">{{ i.name }}</Item>
+      <Item
+        v-for="i in list"
+        :key="i.id"
+        v-bind="i"
+        :showAny="counter.permissions >= 15"
+      >{{ i.name }}</Item>
     </div>
   </div>
 </template>

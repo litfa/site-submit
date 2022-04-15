@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-15 17:35:43
- * @LastEditTime: 2022-04-15 19:11:33
+ * @LastEditTime: 2022-04-15 19:50:20
  * @LastEditors: litfa
  * @Description: item
  * @FilePath: /web/src/components/Item/Item.vue
@@ -29,7 +29,7 @@ const setGood = async () => {
 <template>
   <a :href="`//${host}.${url}`" target="_black">
     <div class="Item">
-      <el-popover placement="top-start" :width="200" trigger="hover">
+      <el-popover placement="top-start" :width="200" trigger="hover" v-if="showAny">
         <template #reference>
           <more-one class="more" theme="outline" size="14" fill="#000000" :strokeWidth="3" />
         </template>
