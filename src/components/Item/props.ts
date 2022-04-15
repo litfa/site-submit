@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-15 17:37:04
- * @LastEditTime: 2022-04-15 17:41:11
+ * @LastEditTime: 2022-04-15 18:31:01
  * @LastEditors: litfa
  * @Description: props
  * @FilePath: /web/src/components/Item/props.ts
@@ -34,5 +34,9 @@ export default {
   },
   username: {
     type: String
+  },
+  showAny: {
+    type: Boolean,
+    default: false
   }
 }

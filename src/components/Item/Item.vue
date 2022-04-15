@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-15 17:35:43
- * @LastEditTime: 2022-04-15 18:23:17
+ * @LastEditTime: 2022-04-15 19:11:33
  * @LastEditors: litfa
  * @Description: item
  * @FilePath: /web/src/components/Item/Item.vue
@@ -10,13 +10,32 @@
 <script lang="ts" setup>
 import propNames from './props'
 import { Right } from '@icon-park/vue-next'
+import { defineAsyncComponent } from 'vue'
+import setGoodApi from '@/apis/setGood'
+import { ElMessage } from 'element-plus'
+const MoreOne = defineAsyncComponent(() => import('@icon-park/vue-next/es/icons/MoreOne'))
 const props = defineProps(propNames)
 const url = import.meta.env.VITE_Page_Url
+const setGood = async () => {
+  const { data: res } = await setGoodApi(props.id)
+  if (res.status == 1) {
+    ElMessage.success('设置成功')
+  } else {
+    ElMessage.error('设置失败，请稍后再试')
+  }
+}
 </script>
 
 <template>
   <a :href="`//${host}.${url}`" target="_black">
     <div class="Item">
+      <el-popover placement="top-start" :width="200" trigger="hover">
+        <template #reference>
+          <more-one class="more" theme="outline" size="14" fill="#000000" :strokeWidth="3" />
+        </template>
+        <h3>更多操作</h3>
+        <el-button @click="setGood">设置/取消优秀网站</el-button>
+      </el-popover>
       <span class="name">{{ name }}</span>
       <span class="url">http://{{ host }}.{{ url }}</span>
       <span>{{ desc }}</span>
@@ -37,7 +56,7 @@ a {
   justify-content: space-around;
   flex-direction: column;
   width: 180px;
-  height: 100px;
+  height: 105px;
   margin: 10px;
   padding: 15px;
   border: 1px #aaaa solid;
