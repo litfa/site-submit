@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 20:41:12
- * @LastEditTime: 2022-04-15 16:28:19
+ * @LastEditTime: 2022-04-15 16:42:02
  * @LastEditors: litfa
  * @Description: 上传文件
  * @FilePath: /web/src/pages/Upload.vue
@@ -49,6 +49,7 @@ const openFs = async () => {
       <el-step title="填写信息" />
       <el-step title="上传文件" />
     </el-steps>
+    <div class="name">{{ siteData.name }}</div>
     <div class="url">{{ siteData.host }}.litf.com.cn</div>
     <div>
       <a :href="`http://${siteData.host}.litf.com.cn`" target="_black">
@@ -61,6 +62,9 @@ const openFs = async () => {
         <upload theme="outline" size="16" fill="#fff" />上传文件
       </el-button>
     </div>
+    <router-link to="/" class="back">
+      <el-button type="primary" plain>回首页</el-button>
+    </router-link>
   </div>
 </template>
 
@@ -82,9 +86,22 @@ const openFs = async () => {
     margin: 5px 0;
     width: 80%;
   }
+  .name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000a;
+  }
   .url {
     font-size: 26px;
-    margin: 15px 0;
+    margin: 0 0 15px 0;
+  }
+  .back {
+    width: 223px;
+    margin: 0;
+    margin-top: 20px;
+    .el-button {
+      width: 100%;
+    }
   }
 }
 </style>
