@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-13 16:59:31
- * @LastEditTime: 2022-04-14 20:40:39
+ * @LastEditTime: 2022-04-14 20:47:51
  * @LastEditors: litfa
  * @Description: 新增站点
  * @FilePath: /web/src/pages/new.vue
@@ -14,6 +14,8 @@ import checkHostApi from './../apis/checkHost'
 import newSiteApi from './../apis/newSite'
 import { LoadingOne } from '@icon-park/vue-next'
 import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const form = reactive({
   name: '',
   desc: '',
@@ -48,6 +50,14 @@ const onSubmit = async () => {
   let { data: res } = await newSiteApi(form.host, form.name, form.desc)
   if (res.status == 1) {
     if (!form.desc) return ElMessage.success('提交成功')
+    setTimeout(() => {
+      router.push({
+        path: '/upload',
+        query: {
+          id: res.id
+        }
+      })
+    }, 1000)
   }
 }
 </script>
