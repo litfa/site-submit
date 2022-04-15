@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 15:23:16
- * @LastEditTime: 2022-04-15 20:00:26
+ * @LastEditTime: 2022-04-15 20:09:45
  * @LastEditors: litfa
  * @Description: 网站
  * @FilePath: /web/src/components/Sites/Sites.vue
@@ -34,7 +34,7 @@ console.log(counter)
 <template>
   <div class="Sites">
     <template v-if="goodList.length > 0">
-      <h1>优秀站点</h1>
+      <h1>👍优秀站点</h1>
       <div class="box">
         <Item
           v-for="i in goodList"

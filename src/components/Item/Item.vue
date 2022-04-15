@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-15 17:35:43
- * @LastEditTime: 2022-04-15 20:00:08
+ * @LastEditTime: 2022-04-15 20:05:44
  * @LastEditors: litfa
  * @Description: item
  * @FilePath: /web/src/components/Item/Item.vue
@@ -30,7 +30,7 @@ const emits = defineEmits(['setGood'])
 
 <template>
   <a :href="`//${host}.${url}`" target="_black">
-    <div class="Item">
+    <div class="Item" :class="{ is_good: props.is_good }">
       <el-popover placement="top-start" :width="200" trigger="hover" v-if="showAny">
         <template #reference>
           <more-one class="more" theme="outline" size="14" fill="#000000" :strokeWidth="3" />
@@ -57,7 +57,7 @@ a {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  width: 180px;
+  width: 200px;
   height: 105px;
   margin: 10px;
   padding: 15px;
@@ -87,6 +87,15 @@ a {
   }
   .url {
     font-size: 12px;
+    // 溢出隐藏
+    overflow: hidden;
+    // 溢出的文本呈现为省略号
+    text-overflow: ellipsis;
+    // 禁止文本换行
+    white-space: nowrap;
+  }
+  &.is_good {
+    border-color: #42b983;
   }
 }
 </style>
