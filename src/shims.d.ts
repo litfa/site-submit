@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-03-13 17:37:28
- * @LastEditTime: 2022-04-15 17:53:57
+ * @LastEditTime: 2022-04-16 17:22:02
  * @LastEditors: litfa
  * @Description: 
  * @FilePath: /web/src/shims.d.ts
@@ -17,7 +17,8 @@ declare const Jijian: any
 interface ImportMetaEnv {
   readonly VITE_Jijian_appid: string,
   readonly VITE_Fs_Url: string,
-  readonly VITE_Page_Url: string
+  readonly VITE_Page_Url: string,
+  readonly VITE_Api_BaseUrl: string
 }
 
 interface ImportMeta {
