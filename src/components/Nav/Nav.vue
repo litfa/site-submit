@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-14 16:42:08
- * @LastEditTime: 2022-04-16 14:22:13
+ * @LastEditTime: 2022-04-16 14:23:51
  * @LastEditors: litfa
  * @Description: 导航栏
  * @FilePath: /web/src/components/Nav/Nav.vue
@@ -15,8 +15,10 @@ const counter = useCounterStore()
 <template>
   <div class="Nav">
     <div class="left">
-      <img src="https://www.litf.com.cn/img/logo.c6c317e1.webp" alt="logo" />
-      <span>还没想到标题</span>
+      <router-link to="/">
+        <img src="https://www.litf.com.cn/img/logo.c6c317e1.webp" alt="logo" />
+        <span>还没想到标题</span>
+      </router-link>
     </div>
     <div class="right">
       <template v-if="counter.isLogin">
@@ -46,7 +48,8 @@ const counter = useCounterStore()
   justify-content: space-between;
   padding: 0 10px;
   box-sizing: border-box;
-  .left {
+  .left,
+  .left a {
     height: 100%;
     display: flex;
     align-items: center;
@@ -59,10 +62,9 @@ const counter = useCounterStore()
       color: #2c3e50;
     }
   }
-  .right {
-    a {
-      text-decoration: none;
-    }
+
+  a {
+    text-decoration: none;
   }
 }
 </style>
