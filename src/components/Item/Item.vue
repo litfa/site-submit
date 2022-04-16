@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-15 17:35:43
- * @LastEditTime: 2022-04-16 14:32:16
+ * @LastEditTime: 2022-04-16 18:49:17
  * @LastEditors: litfa
  * @Description: item
  * @FilePath: /web/src/components/Item/Item.vue
@@ -62,7 +62,7 @@ a {
   justify-content: space-around;
   flex-direction: column;
   width: 200px;
-  height: 105px;
+  // height: 105px;
   margin: 10px;
   padding: 15px;
   border: 1px #aaaa solid;
