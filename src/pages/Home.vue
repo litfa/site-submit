@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-09 18:37:59
- * @LastEditTime: 2022-04-15 20:13:27
+ * @LastEditTime: 2022-04-16 14:07:15
  * @LastEditors: litfa
  * @Description: Home
  * @FilePath: /web/src/pages/Home.vue
@@ -28,5 +28,10 @@ const counter = useCounterStore()
 <style lang="less" scoped>
 .Home {
   display: flex;
+  @media screen and (max-width: 600px) {
+    .cards {
+      display: none;
+    }
+  }
 }
 </style>
