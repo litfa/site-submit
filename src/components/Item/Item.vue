@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-15 17:35:43
- * @LastEditTime: 2022-04-15 20:05:44
+ * @LastEditTime: 2022-04-16 14:32:16
  * @LastEditors: litfa
  * @Description: item
  * @FilePath: /web/src/components/Item/Item.vue
@@ -13,6 +13,7 @@ import { Right } from '@icon-park/vue-next'
 import { defineAsyncComponent } from 'vue'
 import setGoodApi from '@/apis/setGood'
 import { ElMessage } from 'element-plus'
+import Flower from '../Icons/Flower.vue'
 const MoreOne = defineAsyncComponent(() => import('@icon-park/vue-next/es/icons/MoreOne'))
 const props = defineProps(propNames)
 const url = import.meta.env.VITE_Page_Url
@@ -31,6 +32,9 @@ const emits = defineEmits(['setGood'])
 <template>
   <a :href="`//${host}.${url}`" target="_black">
     <div class="Item" :class="{ is_good: props.is_good }">
+      <template v-if="is_good">
+        <Flower class="flower"></Flower>
+      </template>
       <el-popover placement="top-start" :width="200" trigger="hover" v-if="showAny">
         <template #reference>
           <more-one class="more" theme="outline" size="14" fill="#000000" :strokeWidth="3" />
@@ -66,6 +70,7 @@ a {
   box-shadow: -3px 3px 15px 0 rgba(170, 170, 170, 0.307);
   cursor: pointer;
   transition: all 1s;
+  position: relative;
   :deep(svg) {
     transition: all 0.3s;
   }
@@ -96,6 +101,17 @@ a {
   }
   &.is_good {
     border-color: #42b983;
+    box-shadow: -3px 3px 15px 0 rgba(103, 153, 78, 0.307);
+    &:hover {
+      box-shadow: -5px 5px 15px 0 rgba(108, 152, 85, 0.375);
+    }
+  }
+  .flower {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: -15px;
+    top: -15px;
   }
 }
 </style>
