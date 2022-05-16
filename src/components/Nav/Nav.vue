@@ -17,7 +17,7 @@ const counter = useCounterStore()
     <div class="left">
       <router-link to="/">
         <img src="https://www.litf.com.cn/img/logo.c6c317e1.webp" alt="logo" />
-        <span>还没想到标题</span>
+        <span title="河南省财经学校20级计算机专业（锐捷）个人网站展示">个人网站展示</span>
       </router-link>
     </div>
     <div class="right">
